@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Details Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h2>Customer Details:</h2>
+      <form novalidate>
+        <div class="flex">
+          <label>Full Name <span class="required">*</span></label>
+          <div class="name-row">
+            <div class="name-field">
+              <input type="text" placeholder="First Name" required />
+              <span class="label-small">First Name</span>
+              <!-- Error message will be injected here by JS -->
+            </div>
+            <div class="name-field">
+              <input type="text" placeholder="Last Name" required />
+              <span class="label-small">Last name</span>
+              <!-- Error message will be injected here by JS -->
+            </div>
+          </div>
+        </div>
+        <div class="flex">
+          <label>Address <span class="required">*</span></label>
+          <input type="text" placeholder="Street Address" required />
+          <span class="label-small">Street Address</span>
+          <input type="text" placeholder="Street Address Line 2" />
+          <span class="label-small">Street Address Line 2</span>
+          <div class="name-row">
+            <div class="name-field">
+              <input type="text" placeholder="City" />
+              <span class="label-small">City</span>
+            </div>
+            <div class="name-field">
+              <input type="text" placeholder="State / Province" />
+              <span class="label-small">State / Province</span>
+            </div>
+          </div>
+          <input type="text" placeholder="Postal / Zip Code" />
+          <span class="label-small">Postal / Zip Code</span>
+        </div>
+
+        <label>Phone Number <span class="required">*</span></label>
+        <input type="text" placeholder="(000) 000-0000" required />
+
+        <label>E-mail</label>
+        <input type="email" placeholder="ex: email@yahoo.com" />
+
+        <hr class="select-separator" />
+        <label
+          >How did you hear about us? <span class="required">*</span></label
+        >
+        <select required>
+          <option value="">Please Select</option>
+          <option>Social Media</option>
+          <option>Friend</option>
+          <option>Advertisement</option>
+          <option>Other(Please Specify...)</option>
+        </select>
+
+        <label>Feedback about us:</label>
+        <textarea rows="4"></textarea>
+
+        <label class="feedback-label">Feedback about us:</label>
+        <textarea rows="4"></textarea>
+
+        <label>Suggestions if any for further improvement:</label>
+        <textarea rows="4"></textarea>
+
+        <label>Will you be willing to recommend us?</label>
+        <div class="checkboxes">
+          <label><input type="checkbox" /> Yes</label>
+          <label><input type="checkbox" /> Maybe</label>
+          <label><input type="checkbox" /> No</label>
+        </div>
+
+        <label>Please give reference of any two people whom you feel:</label>
+        <table>
+          <thead>
+            <tr>
+              <th class="empty-cell"></th>
+              <th>Full Name</th>
+              <th>Address</th>
+              <th>Contact Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+              <td><input type="text" /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </body>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector("form");
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        let hasError = false;
+        // Only check Full Name section (assume inputs have required attribute)
+        const fullNameInputs = form.querySelectorAll(
+          ".name-row input[required]"
+        );
+        fullNameInputs.forEach((input) => {
+          // Remove any previous error message
+          const parent = input.parentElement;
+          const oldMsg = parent.querySelector(".input-error-message");
+          if (oldMsg) oldMsg.remove();
+          if (!input.value.trim()) {
+            input.classList.add("input-error");
+            // Add error message below input
+            const msg = document.createElement("div");
+            msg.className = "input-error-message";
+            msg.textContent = "This field is required.";
+            parent.appendChild(msg);
+            hasError = true;
+          } else {
+            input.classList.remove("input-error");
+          }
+        });
+        if (hasError) {
+          e.preventDefault();
+        }
+      });
+    });
+  </script>
+</html>
