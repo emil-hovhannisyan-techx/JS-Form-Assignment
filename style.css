@@ -53,10 +53,10 @@
   transition: background 0.2s;
 }
 .email-section.section-error-bg input[type="email"] {
-  border: 1.5px solid var(--dark-red) !important;
+  border: 1.5px solid var(--dark-red);
 }
 .flex.other.section-error-bg input[type="text"] {
-  border: 1.5px solid var(--dark-red) !important;
+  border: 1.5px solid var(--dark-red);
 }
 .flex.other.section-error-bg {
   background: var(--light-red);
@@ -84,7 +84,6 @@
   margin-bottom: 20px;
 }
 
-/* Make the error message small and not full width */
 .small-error {
   display: inline-block;
   font-size: 12px;
@@ -96,7 +95,6 @@
   width: auto;
   box-sizing: border-box;
 }
-/* Error message style for required fields */
 .input-error-message {
   display: inline-block;
   margin-top: 5px;
@@ -144,7 +142,6 @@ textarea:focus {
   border-color: #2e69ff;
   outline: none;
 }
-/* Add spacing and a line after select field */
 .select-separator {
   margin: 40px 0 30px 0;
   border: none;

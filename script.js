@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
     )
       hasError = true;
-
+    //Checking email inputs
     if (
       emailHandle(form, (el) => {
         if (!firstInvalid) firstInvalid = el;
@@ -140,7 +140,7 @@ function showSuccessModal() {
     modal.style.alignItems = "center";
     modal.style.justifyContent = "center";
     modal.style.zIndex = "9999";
-    modal.innerHTML = `
+    modal.innerHTML = ` 
       <div class="success-modal-content">
         <svg class="success-modal-check" width="80" height="80" viewBox="0 0 80 80">
           <circle cx="40" cy="40" r="38" stroke="#18bd5b" stroke-width="4" fill="none" />
@@ -149,7 +149,7 @@ function showSuccessModal() {
         <div class="success-modal-title">Thank You!</div>
         <div class="success-modal-message">Your submission has been received.</div>
       </div>
-    `;
+    `; //didn't find easier way to do this!
     document.body.appendChild(modal);
     setTimeout(() => {
       modal.remove();
