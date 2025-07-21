@@ -1,3 +1,52 @@
+.email-section.section-error-bg {
+  background: var(--light-red);
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.email-section.section-error-bg input[type="email"] {
+  border: 1.5px solid var(--dark-red) !important;
+}
+.flex.other.section-error-bg input[type="text"] {
+  border: 1.5px solid var(--dark-red) !important;
+}
+.flex.other.section-error-bg {
+  background: var(--light-red);
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+.flex.other.section-error-bg input[type="text"] {
+  border: 1.5px solid var(--dark-red);
+}
+.flex.other {
+  display: none;
+}
+/* Address section error border for required fields */
+.address-section.section-error-bg .address-required {
+  border: 1.5px solid var(--dark-red);
+}
+.full-name-section.section-error-bg .name-row input {
+  border: 1.5px solid var(--dark-red);
+}
+/* Section error background for Full Name */
+.section-error-bg {
+  background: var(--light-red);
+  border-radius: 8px;
+  transition: background 0.2s;
+  margin-bottom: 20px;
+}
+
+/* Make the error message small and not full width */
+.small-error {
+  display: inline-block;
+  font-size: 12px;
+  /* padding: 2px 8px 2px 6px; */
+  margin-left: 10px;
+  margin-bottom: 10px;
+  min-width: unset;
+  max-width: 180px;
+  width: auto;
+  box-sizing: border-box;
+}
 /* Error message style for required fields */
 .input-error-message {
   display: inline-block;
@@ -11,17 +60,15 @@
   line-height: 1.3;
   vertical-align: middle;
 }
-/* Optional: icon for error message */
 .input-error-message::before {
   content: "\26A0 ";
   font-size: 15px;
   margin-right: 3px;
 }
-/* Error highlight for required fields */
 input.input-error {
-  border: 1.5px solid var(--dark-red) !important;
-  background: var(--light-red) !important;
+  border: 1.5px solid var(--dark-red);
 }
+
 .feedback-label {
   margin-top: 100px;
   display: block;
@@ -43,6 +90,7 @@ textarea {
   color: #2c3345;
   transition: border-color 0.2s;
 }
+
 textarea:focus {
   border-color: #2e69ff;
   outline: none;
@@ -79,7 +127,7 @@ select {
 
 body {
   background-color: var(--background-color);
-  font-family: Arial, sans-serif; /*To change*/
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 30px 10px;
 }
@@ -101,6 +149,7 @@ label {
   display: block;
   font-weight: 550;
   margin-top: 15px;
+  margin-left: 5px;
 }
 
 .flex {
@@ -116,17 +165,17 @@ input[type="tel"] {
   border-radius: 4px;
   height: 15px;
   margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
   padding: 10px;
-  width: 100%;
 }
 
 .name-row {
   display: flex;
-  column-gap: 30px;
+  gap: 30px;
   margin-bottom: 10px;
-  box-sizing: border-box;
+  box-sizing: content-box;
 }
-
 .name-field {
   display: flex;
   flex: 1;
@@ -144,6 +193,7 @@ input[type="tel"] {
 
 .label-small {
   font-size: 10px;
+  margin-left: 5px;
   margin-top: 5px;
   opacity: 50%;
 }
@@ -256,4 +306,24 @@ button:hover {
 
 .required {
   color: red;
+}
+
+.phone-error-placeholder {
+  margin-top: 5px;
+}
+
+.phone-section.section-error-bg .phone-input {
+  border: 1.5px solid var(--dark-red);
+}
+
+.email-section.section-error-bg .email-input {
+  border: 1.5px solid var(--dark-red);
+}
+
+.phone-input {
+  width: 253px;
+}
+
+.email-section input {
+  width: 253px;
 }

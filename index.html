@@ -5,66 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Customer Details Form</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div class="container">
       <h2>Customer Details:</h2>
       <form novalidate>
-        <div class="flex">
-          <label>Full Name <span class="required">*</span></label>
+        <div class="flex full-name-section">
+          <label for="firstName"
+            >Full Name <span class="required">*</span></label
+          >
           <div class="name-row">
             <div class="name-field">
-              <input type="text" placeholder="First Name" required />
+              <input
+                type="text"
+                id="firstName"
+                placeholder="First Name"
+                required
+              />
               <span class="label-small">First Name</span>
-              <!-- Error message will be injected here by JS -->
             </div>
             <div class="name-field">
-              <input type="text" placeholder="Last Name" required />
+              <input
+                type="text"
+                id="lastName"
+                placeholder="Last Name"
+                required
+              />
               <span class="label-small">Last name</span>
-              <!-- Error message will be injected here by JS -->
             </div>
           </div>
+          <div class="full-name-error-placeholder"></div>
         </div>
-        <div class="flex">
-          <label>Address <span class="required">*</span></label>
-          <input type="text" placeholder="Street Address" required />
+
+        <div class="flex address-section">
+          <label for="streetAddress"
+            >Address <span class="required">*</span></label
+          >
+          <input
+            type="text"
+            id="streetAddress"
+            class="address-required"
+            placeholder="Street Address"
+            required
+          />
           <span class="label-small">Street Address</span>
-          <input type="text" placeholder="Street Address Line 2" />
+          <input
+            type="text"
+            id="streetAddress2"
+            placeholder="Street Address Line 2"
+          />
           <span class="label-small">Street Address Line 2</span>
           <div class="name-row">
             <div class="name-field">
-              <input type="text" placeholder="City" />
+              <input
+                type="text"
+                id="city"
+                class="address-required"
+                placeholder="City"
+                required
+              />
               <span class="label-small">City</span>
             </div>
             <div class="name-field">
-              <input type="text" placeholder="State / Province" />
+              <input
+                type="text"
+                id="state"
+                class="address-required"
+                placeholder="State / Province"
+                required
+              />
               <span class="label-small">State / Province</span>
             </div>
           </div>
-          <input type="text" placeholder="Postal / Zip Code" />
+          <input
+            type="text"
+            id="postalCode"
+            class="address-required"
+            placeholder="Postal / Zip Code"
+            required
+          />
           <span class="label-small">Postal / Zip Code</span>
+          <div class="address-error-placeholder"></div>
         </div>
 
-        <label>Phone Number <span class="required">*</span></label>
-        <input type="text" placeholder="(000) 000-0000" required />
-
-        <label>E-mail</label>
-        <input type="email" placeholder="ex: email@yahoo.com" />
+        <div class="flex phone-section">
+          <label>Phone Number <span class="required">*</span></label>
+          <input
+            class="phone-input"
+            type="text"
+            placeholder="(000) 000-0000"
+            required
+          />
+          <div class="phone-error-placeholder"></div>
+        </div>
+        <div class="flex email-section">
+          <label>E-mail</label>
+          <input type="email" placeholder="ex: email@yahoo.com" />
+          <span class="label-small">example@example.com</span>
+          <div class="email-error-placeholder"></div>
+        </div>
 
         <hr class="select-separator" />
-        <label
-          >How did you hear about us? <span class="required">*</span></label
-        >
-        <select required>
-          <option value="">Please Select</option>
-          <option>Social Media</option>
-          <option>Friend</option>
-          <option>Advertisement</option>
-          <option>Other(Please Specify...)</option>
-        </select>
 
-        <label>Feedback about us:</label>
-        <textarea rows="4"></textarea>
+        <div class="flex hear-about-section">
+          <label
+            >How did you hear about us? <span class="required">*</span></label
+          >
+          <select required>
+            <option value="" selected hidden>Please Select</option>
+            <option value="None">None</option>
+            <option>Social Media</option>
+            <option>Friend</option>
+            <option>Advertisement</option>
+            <option>Other(Please Specify...)</option>
+          </select>
+          <div class="hear-about-error-placeholder"></div>
+        </div>
+        <div class="flex other">
+          <label for="hearAboutUsOther">If other, please specify:</label>
+          <input
+            type="text"
+            id="hearAboutUsOther"
+            placeholder="Please specify..."
+          />
+          <div class="other-error-placeholder"></div>
+        </div>
+        <div class="hear-about-error-placeholder"></div>
 
         <label class="feedback-label">Feedback about us:</label>
         <textarea rows="4"></textarea>
@@ -109,37 +176,4 @@
       </form>
     </div>
   </body>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.querySelector("form");
-      if (!form) return;
-      form.addEventListener("submit", function (e) {
-        let hasError = false;
-        // Only check Full Name section (assume inputs have required attribute)
-        const fullNameInputs = form.querySelectorAll(
-          ".name-row input[required]"
-        );
-        fullNameInputs.forEach((input) => {
-          // Remove any previous error message
-          const parent = input.parentElement;
-          const oldMsg = parent.querySelector(".input-error-message");
-          if (oldMsg) oldMsg.remove();
-          if (!input.value.trim()) {
-            input.classList.add("input-error");
-            // Add error message below input
-            const msg = document.createElement("div");
-            msg.className = "input-error-message";
-            msg.textContent = "This field is required.";
-            parent.appendChild(msg);
-            hasError = true;
-          } else {
-            input.classList.remove("input-error");
-          }
-        });
-        if (hasError) {
-          e.preventDefault();
-        }
-      });
-    });
-  </script>
 </html>
