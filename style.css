@@ -1,3 +1,52 @@
+/* Success Modal Styles */
+#success-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.success-modal-content {
+  background: white;
+  padding: 40px 60px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 100%;
+}
+.success-modal-check {
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.success-modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--main-text);
+  margin-bottom: 10px;
+}
+.success-modal-message {
+  font-size: 1.2rem;
+  color: var(--secondary-text);
+  margin-bottom: 30px;
+}
+.success-modal-close {
+  margin-top: 10px;
+  padding: 10px 30px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background: var(--green-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 .email-section.section-error-bg {
   background: var(--light-red);
   border-radius: 8px;
