@@ -124,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
 // Success modal logic
 function showSuccessModal() {
   let modal = document.getElementById("success-modal");
