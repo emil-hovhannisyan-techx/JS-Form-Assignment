@@ -72,12 +72,6 @@
   display: none;
 }
 /* Address section error border for required fields */
-.address-section.section-error-bg .address-required {
-  border: 1.5px solid var(--dark-red);
-}
-.full-name-section.section-error-bg .name-row input {
-  border: 1.5px solid var(--dark-red);
-}
 /* Section error background for Full Name */
 .section-error-bg {
   background: var(--light-red);
@@ -114,8 +108,11 @@
   font-size: 15px;
   margin-right: 3px;
 }
-input.input-error {
-  border: 1.5px solid var(--dark-red);
+input.input-error,
+input[type="text"].input-error,
+input[type="email"].input-error,
+input[type="tel"].input-error {
+  border: 1.5px solid var(--dark-red) !important;
 }
 
 .feedback-label {

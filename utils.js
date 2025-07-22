@@ -3,51 +3,55 @@ export function handleFullNameError(form, onFirstInvalid) {
   const fullNameInputs = fullNameSection.querySelectorAll(
     ".name-row input[required]"
   );
-  let empty = false;
+  let hasError = false;
+  let firstEmpty = null;
   fullNameInputs.forEach((input) => {
     if (!input.value.trim()) {
+      hasError = true;
       input.classList.add("input-error");
-      if (onFirstInvalid) onFirstInvalid(input);
-      empty = true;
+      if (!firstEmpty) firstEmpty = input;
     } else {
       input.classList.remove("input-error");
     }
   });
+  if (onFirstInvalid && firstEmpty) onFirstInvalid(firstEmpty);
   const errorPlaceholder = fullNameSection.querySelector(
     ".full-name-error-placeholder"
   );
   errorPlaceholder.innerHTML = "";
-  if (empty) {
+  if (hasError) {
     const msg = document.createElement("div");
     msg.className = "input-error-message small-error";
     msg.textContent = "This field is required.";
     errorPlaceholder.appendChild(msg);
     fullNameSection.classList.add("section-error-bg");
-    return true;
+    return hasError;
   } else {
     fullNameSection.classList.remove("section-error-bg");
-    return false;
+    return hasError;
   }
 }
 
 export function handleAddressError(form, onFirstInvalid) {
   const addressSection = form.querySelector(".address-section");
   const addressInputs = addressSection.querySelectorAll(".address-required");
-  let empty = false;
+  let hasError = false;
+  let firstEmpty = null;
   addressInputs.forEach((input) => {
     if (!input.value.trim()) {
+      hasError = true;
       input.classList.add("input-error");
-      if (onFirstInvalid) onFirstInvalid(input);
-      empty = true;
+      if (!firstEmpty) firstEmpty = input;
     } else {
       input.classList.remove("input-error");
     }
   });
+  if (onFirstInvalid && firstEmpty) onFirstInvalid(firstEmpty);
   const errorPlaceholder = addressSection.querySelector(
     ".address-error-placeholder"
   );
   errorPlaceholder.innerHTML = "";
-  if (empty) {
+  if (hasError) {
     const msg = document.createElement("div");
     msg.className = "input-error-message small-error";
     msg.textContent = "This field is required.";
@@ -168,7 +172,7 @@ export function emailHandle(form, onFirstInvalid) {
     return false;
   }
 
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (!emailPattern.test(value)) {
     emailInput.classList.add("input-error");
     emailSection.classList.add("section-error-bg");
